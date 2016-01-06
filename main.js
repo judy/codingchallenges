@@ -1,7 +1,9 @@
 var challenges = [
 	{
-		name: 'Coding Challenge #7',
-		challenge: './07'
+		name:      'Coding Challenge #7',
+		challenge: './07',
+		reference: './07/solution',
+		winner:    './07/mdedmon'
 	},
 	{
 		name: 'Coding Challenge #8'
