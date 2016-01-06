@@ -6,7 +6,8 @@ var challenges = [
 		winner:    './07/mdedmon'
 	},
 	{
-		name: 'Coding Challenge #8'
+		name:      'Coding Challenge #8',
+		challenge: './08/readme.html'
 	}
 ]
 
