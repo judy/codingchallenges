@@ -7,3 +7,11 @@ var map = L.map('map').setView([51.505, -0.09], 13)
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 
 // YOUR CODE HERE
+map.on('move', zoom);
+function zoom(m) {
+	var zoom =  m.target.getZoom();
+	var center = m.target.getCenter();
+	var lat = center.lat
+	var lng = center.lng
+	$db.set({"lat": lat,"lng": lng, "zoom":zoom })
+}

@@ -13,3 +13,6 @@ var map = L.map('map', {
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 
 // YOUR CODE HERE
+$db.on("value",function(snapshot){
+  map.setView([snapshot.val().lat,snapshot.val().lng], snapshot.val().zoom);
+})
