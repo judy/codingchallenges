@@ -13,8 +13,8 @@ var challenges = [
 	},
 	{
 		name:      'Coding Challenge #9',
-		challenge: './09/readme.html'
-		// reference: './09/solution',
+		challenge: './09/readme.html',
+		reference: './09/index.html'
 		// winner:    './09/?????'
 	}
 ]
