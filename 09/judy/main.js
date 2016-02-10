@@ -1,26 +1,16 @@
 // Init map
-var map = L.map('map').setView([51.505, -0.09], 13)
+L.mapbox.accessToken = 'pk.eyJ1IjoiY2xpbnRvbmp1ZHkiLCJhIjoiY2lrZ2FsOXF0MDAzZ3Z0a21qc3p2a3F2YyJ9.ppJmfFS7cLDaNzWupa41qg'
+var map = L.mapbox.map('map').setView([51.505, -0.09], 13)
+L.mapbox.styleLayer('mapbox://styles/clintonjudy/cikgamnsj0030apm54lazomfc').addTo(map);
 map.xRotation = 0
 map.yRotation = 0
-
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 
 // Init assistant
 var assistant = new Assistant()
 
 assistant.teach({
-	'move to *location': location => {
-		geocode(location, result => {
-			if (!result) {
-				assistant.say("I'm sorry, I couldn't find that location.")
-				return
-			}
-
-			assistant.say('Moving map location to ' + location).then(() => {
-				map.panTo([result.lat, result.lon])
-			})
-		})
-	},
+	'move to *location': locate(location),
+	'locate *location': locate(location),
 	'enhance *': zoomIn,
 	'zoom in *': zoomIn,
 	'uncrop *': zoomOut,
@@ -29,10 +19,21 @@ assistant.teach({
 	'mirror *': mirror
 })
 
-function zoomIn() {
-	assistant.say('Enhancing.').then(() => {
-		map.zoomIn()
+function locate(location) {
+	geocode(location, result => {
+		if (!result) {
+			assistant.say("I'm sorry, I couldn't find that location.")
+			return
+		}
+
+		assistant.say('Locating ' + location)
+		map.panTo([result.lat, result.lon])
 	})
+}
+
+function zoomIn() {
+	assistant.say('Enhancing.')
+	map.zoomIn()
 }
 
 function zoomOut() {
