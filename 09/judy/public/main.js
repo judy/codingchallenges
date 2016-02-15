@@ -4,6 +4,8 @@ var map = L.mapbox.map('map').setView([51.505, -0.09], 13)
 L.mapbox.styleLayer('mapbox://styles/clintonjudy/cikgamnsj0030apm54lazomfc').addTo(map);
 map.xRotation = 0
 map.yRotation = 0
+map.zRotation = 0
+var degrees = 0
 
 // Init assistant
 var assistant = new Assistant()
@@ -16,7 +18,9 @@ assistant.teach({
 	'uncrop *': zoomOut,
 	'zoom out *': zoomOut,
 	'reverse *': mirror,
-	'mirror *': mirror
+	'mirror *': mirror,
+	'flip *': flip,
+	'rotate *degrees': rotate(degrees)
 })
 
 function locate(location) {
@@ -42,7 +46,22 @@ function zoomOut() {
 
 function mirror() {
 	map.yRotation += 180
-	$('#map').css('transform', 'rotateY(' + map.yRotation + 'deg)')
+	updateTransform()
+}
+
+function flip() {
+	map.xRotation += 180
+	updateTransform()
+}
+
+function rotate(degrees) {
+	degrees = parseInt(degrees)
+	map.zRotation += degrees
+	updateTransform()
+}
+
+function updateTransform() {
+	$('#map').css('transform', 'rotateX(' + map.xRotation + 'deg) rotateY(' + map.yRotation + 'deg) rotateZ(' + map.zRotation + 'deg)')
 }
 
 function geocode(query, callback) {
