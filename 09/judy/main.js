@@ -22,7 +22,7 @@ assistant.teach({
 function locate(location) {
 	geocode(location, result => {
 		if (!result) {
-			assistant.say("I'm sorry, I couldn't find that location.")
+			assistant.say("Not found.")
 			return
 		}
 

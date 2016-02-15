@@ -6,7 +6,7 @@ Assistant = function(commands) {
 	})
 
 	annyang.addCallback('error', () => {
-		this.say("I'm sorry, I didn't catch that.")
+		this.say("Repeat.")
 	})
 
 	return this
