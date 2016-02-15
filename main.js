@@ -14,8 +14,8 @@ var challenges = [
 	{
 		name:      'Coding Challenge #9',
 		challenge: './09/readme.html',
-		reference: './09/index.html'
-		// winner:    './09/?????'
+		reference: './09/index.html',
+		winner:    './09/dhamm'
 	}
 ]
 
