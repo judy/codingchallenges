@@ -1,12 +1,24 @@
 var markov = Object.create(null)
 var beginnings = Object.create(null)
 
-addWikipediaArticle('California')
+// addWikipediaArticle('California')
+addTranscript('transcripts/2015-1-24.txt')
 .then(function() {
 	for(var i = 0; i <= 100; i++) {
 		$('#chainz').append(makeChain(30))
 	}
 })
+
+function addTranscript(url) {
+	return Q($.ajax({
+		url: url,
+		dataType: 'text'
+	})).then(function(data) {
+		tokens = data.match(/[a-z\']+|[\.\,\!\?]+/gi)
+		addToMarkovChain(tokens)
+		console.log('Transcript added: ' + url)
+	})
+}
 
 function addWikipediaArticle(q) {
 	return Q($.ajax({
