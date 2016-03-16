@@ -21,6 +21,10 @@ var challenges = [
 		name:      'Coding Challenge #10',
 		challenge: './10/readme.html',
 		winner:    './10/judy'
+	},
+	{
+		name:      'Coding Challenge #11',
+		challenge: './11/readme.html'
 	}
 ]
 
