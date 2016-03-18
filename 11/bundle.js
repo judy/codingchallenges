@@ -47,25 +47,6 @@ class Life {
 
 	advance() {
 		// TODO: create a new state, push it onto the state stack, and increment the generation counter
-		var newState = _.cloneDeep(this.states[this.generation])
-
-		_.each(this.states[this.generation], (row, y) => {
-			_.each(row, (alive, x) => {
-				var numNeighbors =
-					this.isAlive(x - 1, y - 1) + this.isAlive(x + 0, y - 1) + this.isAlive(x + 1, y - 1) +
-					this.isAlive(x - 1, y + 0) +                              this.isAlive(x + 1, y + 0) +
-					this.isAlive(x - 1, y + 1) + this.isAlive(x + 0, y + 1) + this.isAlive(x + 1, y + 1)
-
-				if      ( alive && numNeighbors <  2) {newState[y][x] = 0} // under-population
-				else if ( alive && numNeighbors >  3) {newState[y][x] = 0} // over-population
-				else if (!alive && numNeighbors == 3) {newState[y][x] = 1} // reproduction
-			})
-		})
-
-		this.states.push(newState)
-		this.generation++
-
-		return this
 	}
 
 	isAlive(x, y) {
@@ -174,18 +155,7 @@ function initLife() {
 }
 
 function drawLife() {
-	var current  = window.game.life.current()
-	var previous = window.game.life.previous()
-	var y        = 1
-
-	_.each(current, (row, z) => {
-		_.each(row, (alive, x) => {
-			// Create block if A) there's no previous state known, or B) it's changed
-			if (true || !previous || current[z][x] != previous[z][x]) {
-				window.game.setBlock([x, y, z], alive ? materials.grass : materials.dirt)
-			}
-		})
-	})
+	// TODO: use data from window.game.life to set blocks correctly
 }
 }).call(this,"/")
 },{"./life":1,"./materials":3,"lodash":20,"painterly-textures":22,"voxel-engine":33,"voxel-fly":36,"voxel-player":40}],3:[function(require,module,exports){
