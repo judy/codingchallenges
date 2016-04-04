@@ -45,11 +45,15 @@ class Life {
 	}
 
 	isAlive(x, y) {
-		return (
+		if (
 			y >= 0 && y < this.states[this.generation]   .length &&
 			x >= 0 && x < this.states[this.generation][y].length &&
 			this.states[this.generation][y][x]
-		)
+		) {
+			return 1
+		} else {
+			return 0
+		}
 	}
 
 	shouldBeAlive(state, neighbors) {
@@ -59,8 +63,6 @@ class Life {
 		else {
 			return 0
 		}
-		// console.log("state: " + state)
-		// console.log("neighbors: " + neighbors);
 	}
 
 	current() {
