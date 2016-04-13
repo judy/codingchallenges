@@ -1,0 +1,43 @@
+html, body {
+	width:    100%;
+	height:   100%;
+	overflow: hidden;
+}
+
+#map-container {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#map {
+	height: 100%;
+	width: 100%;
+}
+
+/* make vertical objects visible */
+#map {
+	overflow:visible;
+}
+
+/* removes a flickering background color */
+.leaflet-container {
+	background:none;
+}
+
+/* set up our 3D space */
+#map,
+#map * {
+	-webkit-transform-style:preserve-3d;
+	transform-style:preserve-3d;
+}
+
+#map {
+	transform:rotateX(60deg);
+}
+
+#map-container {
+	perspective: 1200px;
+}
