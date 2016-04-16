@@ -1,0 +1,19 @@
+{
+  "name": "efc-fa-cc-12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "browserify main.js -o bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "painterly-textures": "0.0.3",
+    "voxel-engine": "^0.20.2",
+    "voxel-fly": "^0.1.2",
+    "voxel-player": "^0.1.0"
+  }
+}
